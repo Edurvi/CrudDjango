@@ -5,6 +5,11 @@ from django.urls import reverse_lazy
 from .models import *
 from .forms import *
 
+
+from rest_framework import generics
+from .models import Product
+from .serializers import ProductSerializer
+
 # Create your views here.
 
 #Funcion que se va a encargar de leer el Archivo Html que tenemos en la carpeta Template
@@ -157,3 +162,8 @@ class ProductDel(generic.DeleteView):
     success_url = reverse_lazy("app:productos_list")  # URL a la que se redirigirá después de eliminar el objeto
     success_message = "Modelo eliminado satisfactoriamente"  # Mensaje de éxito que se mostrará
 
+
+
+class ProductoListView(generics.ListAPIView):
+    queryset = Product.objects.all() 
+    serializer_class = ProductSerializer  
