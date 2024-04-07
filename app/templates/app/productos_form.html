@@ -1,0 +1,15 @@
+{% extends 'bases/productos.html' %}
+
+{% block content %}
+<form method="post">
+  <fieldset>
+    <legend>
+      {% if not obj %} Nuevo Producto {%else%} Editar Producto {% endif%}
+    </legend>
+    {%csrf_token%}
+    {{form}}
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </fieldset>
+</form>
+{% endblock%}

@@ -1,0 +1,33 @@
+{% extends 'bases/index.html' %}
+
+{% block content %}
+<h2 class="my-4">Crud Categorias</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">date_creation</th>
+            <th scope="col">date_update</th>
+            <th scope="col">state</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in obj %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.date_creation }}</td>
+            <td>{{ item.date_update }}</td>
+            <td>{{ item.state }}</td>
+            <td>
+                <a href="{% url 'app:edit' item.id %}" class="btn btn-block btn-info">Editar</a>
+                <a href="{% url 'app:del' item.id %}" class="btn btn-block btn-info">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
