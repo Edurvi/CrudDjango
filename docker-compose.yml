@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.11
+    restart: always
+    container_name: postgresql
+    ports:
+      - "5435:5435" 
+    environment:
+      - POSTGRES_DB=tabla_dj_crud
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  django:
+    container_name: django
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8001:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=Aq7#v2fPd&8#p9c4*7Xt7P$58GqW!2Yj9BcL3cNcBzT6yHd8Zf
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - DATABASE_PORT=5435
