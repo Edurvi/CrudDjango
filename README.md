@@ -1,5 +1,4 @@
 # Explicacion de como se realizo el proyecto y su Ejecucion
-## Instalación de PostgreSQL desde Binarios
 
 ## Instalación de PostgreSQL desde Binarios
 Para ejecutar este proyecto, se necesita PostgreSQL versión 14.11, que puedes descargar desde [Descargar PostgreSQL 14.11](https://www.enterprisedb.com/download-postgresql-binaries).
@@ -53,7 +52,7 @@ Después de seguir estos pasos, deberías poder ejecutar el comando `psql` desde
 
 ## Proyecto Django
 
-Este proyecto Django requiere una estructura específica de carpetas. Sigue estos pasos para configurarlo:
+Este proyecto Django se hizo con una estructura específica de carpetas. Sigue estos pasos para configurarlo:
 
 1. Crea una carpeta principal para tu proyecto Django.
 
@@ -68,6 +67,10 @@ Una vez que hayas configurado la estructura de carpetas, sigue los siguientes pa
    ```bash
    python -m venv venv
    ```
+
+   Esto creará un entorno virtual llamado `venv` en tu directorio actual.
+
+
 
 2. Activa el entorno virtual. En Windows, puedes hacerlo con el siguiente comando:
 
