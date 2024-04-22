@@ -1,11 +1,15 @@
 # Explicacion de como se realizo el proyecto y su Ejecucion
 ## Instalación de PostgreSQL desde Binarios
-Para ejecutar este proyecto, se requiere PostgreSQL. La versión necesaria es la 14.11, que se puede descargar desde el siguiente enlace: [Descargar PostgreSQL 14.11](https://www.enterprisedb.com/download-postgresql-binaries).
 
-Una vez descargado, sigue estos pasos:
+## Instalación de PostgreSQL desde Binarios
+Para ejecutar este proyecto, se necesita PostgreSQL versión 14.11, que puedes descargar desde [Descargar PostgreSQL 14.11](https://www.enterprisedb.com/download-postgresql-binaries).
 
-1. Descomprime el archivo descargado.
-2. Dentro de la carpeta descomprimida, crea un archivo `.bat`. Por ejemplo, `servicio.bat`.
+Una vez descargado el archivo de instalación, sigue estos pasos:
+
+1. Descomprime el archivo descargado en una ubicación conveniente en tu sistema.
+
+2. Dentro de la carpeta descomprimida, crea un archivo de script de inicio. Por ejemplo, `iniciar_postgres.bat`.
+
 3. Abre el archivo `.bat` con un editor de texto y añade el siguiente contenido:
 
 ```batch
@@ -17,17 +21,34 @@ Una vez descargado, sigue estos pasos:
 @SET PGPORT=5435
 @SET PGLOCALEDIR=%~dp0\share\locale
 rem "%~dp0\bin\initdb" -U postgres -A trust
-"%~dp0\bin\pg_ctl" -D "%~dp0/data" -l logfile start
+"%~dp0\bin\pg_ctl" -D "%~dp0\data" -l logfile start
 ECHO "Presiona enter para detener el servicio"
 pause
-"%~dp0\bin\pg_ctl" -D "%~dp0/data" stop
+"%~dp0\bin\pg_ctl" -D "%~dp0\data" stop
 ```
 
 4. Guarda el archivo `.bat`.
 
-5. Ejecuta el archivo `.bat` y luego prueba que todo funcione correctamente desde la consola.
+5. Ejecuta el archivo `.bat` para iniciar el servicio de PostgreSQL. La primera vez que lo ejecutes, descomenta la línea que inicializa la base de datos (elimina el `rem`), luego vuelve a comentarla. Esto es necesario solo la primera vez para inicializar la base de datos.
 
-En este caso, se utiliza el puerto `5435`. Asegúrate de que este puerto esté disponible y no esté siendo utilizado por otro servicio en tu sistema.
+6. Asegúrate de que el puerto `5435` esté disponible y no esté siendo utilizado por otro servicio en tu sistema.
+
+## Configuración de las Variables de Entorno del Sistema
+
+Después de instalar PostgreSQL, necesitas agregar la ruta al directorio binario de PostgreSQL a las variables de entorno del sistema para que el comando `psql` sea reconocido globalmente en tu sistema. Sigue estos pasos:
+
+1. Abre el menú de inicio y busca "Variables de entorno" o "Editar variables de entorno del sistema".
+
+2. En la ventana de propiedades del sistema, haz clic en "Variables de entorno".
+
+3. En la sección "Variables del sistema", selecciona la variable llamada "Path" y haz clic en "Editar".
+
+4. Haz clic en "Nuevo" y agrega la ruta completa al directorio `bin` de PostgreSQL. Por ejemplo: `C:\Ruta\a\PostgreSQL\bin`.
+
+5. Guarda los cambios y cierra todas las ventanas.
+
+Después de seguir estos pasos, deberías poder ejecutar el comando `psql` desde cualquier ubicación en tu sistema sin obtener el mensaje de error "psql no se reconoce como un comando interno o externo".
+```
 
 
 ## Proyecto Django
