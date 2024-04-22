@@ -49,7 +49,7 @@ Después de instalar PostgreSQL, necesitas agregar la ruta al directorio binario
 Después de seguir estos pasos, deberías poder ejecutar el comando `psql` desde cualquier ubicación en tu sistema sin obtener el mensaje de error "psql no se reconoce como un comando interno o externo".
 ```
 
-
+```
 ## Proyecto Django
 
 Este proyecto Django se hizo con una estructura específica de carpetas. Sigue estos pasos para configurarlo:
